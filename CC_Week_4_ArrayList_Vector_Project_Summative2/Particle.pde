@@ -20,25 +20,18 @@ class Particle
   Particle ()
   {
     imageMode(CENTER);
-    pos=new PVector (random(370, 430), 600);
+    pos=new PVector (random(375, 430), 600);
     dir= new PVector(0, -1);
     campfire= loadImage("Screen Shot 2021-02-28 at 15.07.19.png");
-    color darkRed=color(177, 64, 33, age);
-    color yellow=color(238, 205, 86, age);
-    color white=color(249, 235, 171, age);
-    colorArray[0]=darkRed;
-    colorArray[1]=yellow;
-    colorArray[2]=white;
+    age=255;
+    colorArray[0]=color(196, 80, 8, age);
+    colorArray[1]=color(238, 205, 86, age);
+    colorArray[2]=color(249, 235, 171, age);
     c = colorArray[(int)random(0, 3)];
-    //println(c);
-    //println(colors[1]);
     floatup=1;
-    //vel=new PVector (0, 0);
-    //wind= new PVector(map(mouseX, 0, 800, -0.05, 0.05), 0);
     windStrength=0;
     wind= new PVector(0, 0);
-    //println(windStrength);
-    age=255;
+
     test=0;
   }
 
@@ -54,11 +47,9 @@ class Particle
   void Render()
   {
     noStroke();
-    fill(177, 64, 33, age);
-    //fill(c);
+    fill(c,age);
     rect(pos.x, pos.y, 10, 10);
     image(campfire, 405, 620);
-    //println(colors);
   }
   void Update()
   {
@@ -79,11 +70,15 @@ class Particle
   {
     if (keyCode == RIGHT)
     {
-      wind.x=wind.x+0.0003;
+      wind.x=wind.x+0.0001;
     }
     if (keyCode== LEFT)
     {
-      wind.x=wind.x-0.0003;
+      wind.x=wind.x-0.0001;
     }
+  }
+  boolean getisDead()
+  {
+    return isDead;
   }
 }

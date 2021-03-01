@@ -1,4 +1,5 @@
 Particle p;
+PImage background;
 ArrayList<Particle> generator = new ArrayList<Particle>();
 void setup()
 {
@@ -13,23 +14,15 @@ void setup()
 void draw()
 {
   background(0);
+  background= loadImage("minecraft background.jpg");
+  image(background, 400, 400);
+
   for (Particle p : generator)
   {
     p.Update();
   }
-  if (p.isDead);
+  if (p.getisDead());
   {
     generator.add(new Particle());
-  }
-}
-void keyPressed()
-{
-  if (key == 'w')
-  {
-    p.windStrength=15;
-  }
-  if (key=='d')
-  {
-    p.windStrength=p.windStrength-1;
   }
 }
